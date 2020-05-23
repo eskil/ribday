@@ -37,7 +37,6 @@ defmodule Main do
       group: options[:group],
       token: options[:token],
       before_id: options[:before_id],
-      ribday_only: flags[:ribday_only],
       debug: flags[:debug],
       verbosity: flags[:verbosity]
     }
@@ -87,12 +86,6 @@ defmodule Main do
           short: "-v",
           help: "Verbosity level",
           multiple: true,
-        ],
-        ribday_only: [
-          short: "-r",
-          long: "--ribday-only",
-          help: "Only scrape ribday",
-          multiple: false,
         ],
       ],
       options: [
