@@ -10,7 +10,7 @@ defmodule GroupMe.Producer do
 
   def init(state) do
     Logger.info("GroupMe.Producer, init with state: #{inspect(state)}")
-    {:producer, Map.merge(state, %{before_id: nil, queue: []})}
+    {:producer, Map.merge(state, %{queue: []})}
   end
 
   def is_a_ribday?(ts) do

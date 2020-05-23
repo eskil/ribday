@@ -36,6 +36,7 @@ defmodule Main do
     producer_state = %{
       group: options[:group],
       token: options[:token],
+      before_id: options[:before_id],
       ribday_only: flags[:ribday_only],
       debug: flags[:debug],
       verbosity: flags[:verbosity]
@@ -67,11 +68,11 @@ defmodule Main do
 
   defp parse_args(argv) do
     Optimus.new!(
-      name: "statcalc",
-      description: "Statistic metrics calculator",
+      name: "ribday",
+      description: "Scrapes groupme",
       version: "1.2.3",
-      author: "John Smith js@corp.com",
-      about: "Utility for calculating statistic metrics of values read from a file for a certain period of time",
+      author: "eskil@eskil.org",
+      about: "Utility to scrape ribday",
       allow_unknown_args: false,
       parse_double_dash: true,
       flags: [
@@ -107,6 +108,14 @@ defmodule Main do
             end
           end,
           required: true
+        ],
+        before_id: [
+          value_name: "BEFORE_ID",
+          short: "-b",
+          long: "--before",
+          help: "Messages before this id",
+          parser: :integer,
+          required: false
         ],
         group: [
           value_name: "GROUP",
